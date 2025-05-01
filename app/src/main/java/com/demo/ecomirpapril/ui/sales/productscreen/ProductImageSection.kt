@@ -11,8 +11,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import coil.compose.rememberAsyncImagePainter
 import com.demo.ecomirpapril.model.Product
 import com.demo.ecomirpapril.ui.theme.Purple40
 
@@ -29,11 +29,12 @@ fun ProductImageSection(product: Product) {
                 shape = RoundedCornerShape(16.dp)
             )
     ) {
+
         Image(
-            painter = painterResource(id = product.image),
-            contentDescription = product.title,
+            painter = rememberAsyncImagePainter(product.image),
+            contentDescription = null,
             modifier = Modifier.fillMaxSize(),
-            contentScale = ContentScale.Fit
+            contentScale = ContentScale.FillBounds
         )
     }
 }

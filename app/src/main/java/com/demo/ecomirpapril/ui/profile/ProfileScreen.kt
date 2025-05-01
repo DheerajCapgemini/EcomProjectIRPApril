@@ -30,6 +30,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -49,7 +50,7 @@ import com.demo.ecomirpapril.R
 fun ProfileScreen() {
     val PurpleColor = Color(0xFF6650a4) // Color theme
     val context = LocalContext.current
-    var profilePicture by remember { mutableStateOf(R.drawable.laptop) }
+    var profilePicture by remember { mutableIntStateOf(R.drawable.profile) }
     var username by remember { mutableStateOf("xyz") }
     var email by remember { mutableStateOf("dh@dh.com") }
 

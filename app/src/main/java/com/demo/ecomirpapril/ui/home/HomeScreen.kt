@@ -1,8 +1,6 @@
 package com.demo.ecomirpapril.ui.home
 
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
@@ -17,15 +15,13 @@ import com.demo.ecomirpapril.ui.sales.salesScreen.FlashSaleScreen
 @Composable
 fun HomeScreen(navController: NavHostController) {
     val productViewModel: ProductViewModel = viewModel()
-    LazyColumn {
+    LazyColumn{
         item {
-            Column(
-                modifier = Modifier.fillMaxSize()
-            ) {
-                DeliveryScreen(navController = navController)
-                Spacer(modifier = Modifier.height(16.dp))
-                FlashSaleScreen(productViewModel,navController = navController)
-            }
+            DeliveryScreen(navController=navController)
+            Spacer(modifier = Modifier.height(16.dp))
+        }
+        item {
+            FlashSaleScreen(productViewModel,navController=navController)
         }
     }
 

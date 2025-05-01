@@ -15,16 +15,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import coil.compose.rememberAsyncImagePainter
 import com.demo.ecomirpapril.model.Product
 import com.demo.ecomirpapril.ui.theme.Purple40
 
 @Composable
 fun ProductCard(product: Product, onClick: () -> Unit) {
     val interactionSource = remember { MutableInteractionSource() }
+    val painter =rememberAsyncImagePainter(model = product.image)
 
     Column(
         modifier = Modifier
@@ -38,7 +39,7 @@ fun ProductCard(product: Product, onClick: () -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
-            painter = painterResource(product.image),
+            painter = painter,
             contentDescription = product.title,
             modifier = Modifier
                 .fillMaxWidth()
@@ -49,7 +50,7 @@ fun ProductCard(product: Product, onClick: () -> Unit) {
                     color = Purple40,
                     shape = RoundedCornerShape(12.dp)
                 ),
-            contentScale = ContentScale.Fit
+            contentScale = ContentScale.Crop
         )
 
         Spacer(modifier = Modifier.height(12.dp))

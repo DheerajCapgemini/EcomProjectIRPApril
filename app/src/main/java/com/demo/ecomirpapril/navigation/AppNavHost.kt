@@ -9,6 +9,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.demo.ecomirpapril.ui.ProductViewModel
+import com.demo.ecomirpapril.ui.favourites.FavoritesScreen
 import com.demo.ecomirpapril.ui.sales.productscreen.ProductDetailScreen
 import com.demo.ecomirpapril.ui.home.HomeScreen
 import com.demo.ecomirpapril.ui.profile.ProfileScreen
@@ -35,15 +36,19 @@ fun AppNavHost(navController: NavHostController) {
                 FlashSaleScreen(productViewModel,navController = navController)
             }
 
+            composable("favourites_screen") {
+                FavoritesScreen(navController = navController)
+            }
+
             composable("profile_screen") {
                 ProfileScreen()
             }
-
 
             composable("productDetail/{productId}") { backStackEntry ->
                 val productId = backStackEntry.arguments?.getString("productId")?.toIntOrNull()
                 if (productId != null) {
                     ProductDetailScreen(
+                        productViewModel,
                         productId = productId,
                         navController = navController,
                     )

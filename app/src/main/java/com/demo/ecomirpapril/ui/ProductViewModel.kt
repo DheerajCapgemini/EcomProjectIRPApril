@@ -7,14 +7,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.demo.ecomirpapril.api.NetworkResponse
 import com.demo.ecomirpapril.api.RetrofitInstance
+import com.demo.ecomirpapril.api.getOrEmpty
 import com.demo.ecomirpapril.model.Product
 import kotlinx.coroutines.launch
 
 class ProductViewModel : ViewModel() {
 
     private val productsApi = RetrofitInstance.productsApi
-    private val _productsResult = MutableLiveData<NetworkResponse<Product>>()
-    val productResult : LiveData<NetworkResponse<Product>> = _productsResult
+    private val _productsResult = MutableLiveData<NetworkResponse<List<Product>>>()
+    val productResult : LiveData<NetworkResponse<List<Product>>> = _productsResult
     init {
         getData()
     }
@@ -37,6 +38,11 @@ class ProductViewModel : ViewModel() {
             }
 
         }
+    }
+
+    fun getProductById(id: Int): Product? {
+        val productList = productResult.value?.getOrEmpty() ?: emptyList()
+        return productList.find { it.id == id }
     }
 
 }

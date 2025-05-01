@@ -6,3 +6,13 @@ sealed class NetworkResponse<out T> {
     data class Error(val message : String) : NetworkResponse<Nothing>()
     object Loading : NetworkResponse<Nothing>()
 }
+
+inline fun <reified T> NetworkResponse<T>.getOrEmpty(): T {
+    return when (this) {
+        is NetworkResponse.Success -> this.data
+        else -> when (T::class) {
+            List::class -> emptyList<Any>() as T
+            else -> throw IllegalStateException("No default empty value for ${T::class}")
+        }
+    }
+}
