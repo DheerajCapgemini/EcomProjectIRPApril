@@ -17,10 +17,9 @@ fun PriceDisplay(originalPrice: Double) {
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
             Text(
-            text = "₹$originalPrice",
+            text = "₹ $originalPrice",
             style = MaterialTheme.typography.bodyMedium.copy(
-                color = Color.Gray,
-                textDecoration = TextDecoration.LineThrough
+                color = Color.Black,
             )
         )
     }
