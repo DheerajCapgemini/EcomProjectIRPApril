@@ -27,7 +27,7 @@ import com.demo.ecomirpapril.ui.theme.Purple40
 @Composable
 fun BottomNavigationBar(navController: NavHostController) {
     val items = listOf(
-        BottomNavItem("home_screen", "Home Feed", Icons.Default.Home),
+        BottomNavItem("home_screen", "Home", Icons.Default.Home),
         BottomNavItem("favourites_screen", "Favourites", Icons.Default.FavoriteBorder),
         BottomNavItem("profile_screen", "Profile", Icons.Default.Person)
     )
@@ -57,8 +57,8 @@ fun BottomNavigationBar(navController: NavHostController) {
                 label = {
                     Text(
                         text = item.title,
-                        color = if (isSelected) Color.Black else Color.Gray,
-                        fontSize = if (isSelected) 13.sp else 11.sp,
+                        color = if (isSelected) Color.Black else Color.White,
+                        fontSize = if (isSelected) 18.sp else 14.sp,
                         fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Medium
                     )
                 },
